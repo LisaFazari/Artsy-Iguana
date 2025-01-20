@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the page is displayed properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsy Iguana</title>
+    
+    <!-- Stylesheet for signup page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/signup.css') }}">
+
+</head>
+<body>
+    <!-- Navigation bar set up -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the navbar, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="logo">
+            </a>
+        </div>
+        <!-- Links in the navigation bar -->
+        <div class="navbar-menu">
+            <a href="home">Home</a>
+            <a href="gallery">Gallery</a>
+            <a id="nav-myprofile" href="myprofile">My Profile</a>
+            <a id="nav-login" href="login">Login</a>
+            <a id="nav-register" href="register">Sign up</a>
+        </div>
+    </nav>
+
+    <!-- Container for the signup form -->
+    <div class="signup-container">
+        <div class="signup-box">
+            <!-- Signup form heading -->
+            <h2>Create Your Account</h2>
+            <!-- Subtitle adding context about the form -->
+            <p class="signup-subtitle">Join the Artsy Iguana community</p>
+
+            <!-- The form where the user will input their data onsubmit="redirectToProfile(event)" -->
+            <form class="signup-form" action="/register" method="POST">
+                <!-- Section where user will select their account type -->
+                <div class="account-type">
+                    <h3>I want to join as:</h3>
+                    <div class="type-options">
+
+                        <!-- Account type option: Artist -->
+                        <label class="type-option">
+                            <input type="radio" name="accountType" value="True" required>
+                            <span class="option-text">
+                                <!-- Description for Artist type -->
+                                <strong>Artist</strong>
+                                <span>I want to showcase and sell my art</span>
+                            </span>
+                        </label>
+
+                        <!-- Account type option: Art Collector -->
+                        <label class="type-option">
+                            <input type="radio" name="accountType" value="False" required>
+                            <span class="option-text">
+                                <!-- Description for Art Collector type -->
+                                <strong>Art Collector</strong>
+                                <span>I want to discover and collect art</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Form field for user to fill in their First Name, Last Name, Email Address, Password and to confirm their Password -->
+                <div class="form-group">
+                    <!-- First Name input field -->
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- Email Address input field -->
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- Password input field -->
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <!-- Hint for a strong Password-->
+                    <small class="password-hint">Hint for a strong password: Must be at least 8 characters long with a number and special character</small>
+                </div>
+
+                <div class="form-group">
+                    <!-- Confirm Password input field -->
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <div class="terms-privacy">
+                    <!-- Terms and Privacy Policy checkbox to confirm agreement -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agree" required>
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <!-- Submit button to create an account -->
+                <button type="submit" class="signup-button">Create Account</button>
+            </form>
+
+            <!-- Login prompt if user already has an account to login -->
+            <div class="login-prompt">
+                <p>Already have an account? <a href="login">Log in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the footer, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="footer-logo">
+            </a>
+            <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to display alerts -->
+    <script>
+        // Waiting for the DOM to be fully loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            // Creating a new URLSearchParams from the query string in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            // Getting the value of the 'message' query 
+            const message = urlParams.get('message');
+            
+            // If the 'message' query exists
+            if (message) {
+                // Display the alert with the message
+                alert(message);  
+                // Clear the query parameters from the URL, prevents the message from being shown again if page refreshed
+                history.replaceState(null, '', window.location.pathname);  
+            }
+        });
+    </script>
+    <script type="text/javascript" src="../static/javascript/navbar.js"></script>
+</body>
+</html>
+

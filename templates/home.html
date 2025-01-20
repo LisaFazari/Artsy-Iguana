@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the page is displayed properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsy Iguana</title>
+
+    <!-- Stylesheet for home page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+
+</head>
+<body>
+    <!-- Navigation bar set up -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the navbar, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="logo">
+            </a>
+        </div>
+        <!-- Links in the navigation bar -->
+        <div class="navbar-menu">
+            <a href="home">Home</a>
+            <a href="gallery">Gallery</a>
+            <a id="nav-myprofile" href="myprofile">My Profile</a>
+            <a id="nav-login" href="login">Login</a>
+            <a id="nav-register" href="register">Sign up</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero section on Home page -->
+        <div class="hero">
+            <h1>Welcome to Artsy Iguana</h1>
+            <p class="tagline">Discover and Support Aruban Artists</p>
+            <p class="hero-text">Your gateway to authentic Aruban art</p>
+            <p class="hero-text">Where local talent meets global appreciation</p>
+            <!-- Button in the hero section to send the users to the Gallery page -->
+            <a href="gallery" class="cta-button">Explore Art</a>
+        </div>
+
+        
+
+        <!-- Featuring 3 Artists on the Home page -->
+        <section class="featured">
+            <h2>Featured Artwork</h2>
+            <div class="artwork-grid">
+            {% for artwork in artworks %}
+                <div class="grid-item">
+                    <h2>{{ artwork[1] }}</h2>
+                    <p>Artist: {{ artwork[3] }}</p>
+                    <img src="{{ url_for('static', filename='UPLOAD_FOLDER/' + artwork[4]|string + '/' + artwork[2]) }}" alt="{{ artwork[1] }}" width="300">
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+
+        <!-- About Section that includes information about Artsy Iguana -->
+        <section class="about">
+            <h2>Why Artsy Iguana?</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Local Artists</h3>
+                    <p>Support talented Aruban artists and discover unique pieces that tell our island's story.</p>
+                </div>
+                <div class="feature">
+                    <h3>Authentic Art</h3>
+                    <p>Each piece reflects our rich culture and the vibrant spirit of Aruba.</p>
+                </div>
+                <div class="feature">
+                    <h3>Direct Connection</h3>
+                    <p>Connect directly with artists and become part of our creative community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join the community section -->
+        <section class="join">
+            <h2>Join Our Artistic Community</h2>
+            <div class="join-options">
+                <div class="artist-join">
+                    <h3>For Artists</h3>
+                    <p>Share your artwork with art lovers worldwide.</p>
+                    <p>Create your gallery and start selling today.</p>
+                    <!-- Button for artists to register -->
+                    <a href="register" class="button">Start Creating</a>
+                </div>
+                <div class="collector-join">
+                    <h3>For Art Lovers</h3>
+                    <p>Discover unique pieces from Aruba's finest artists.</p>
+                    <p>Start your collection today.</p>
+                    <!-- Button for collectors to register -->
+                    <a href="register" class="button">Start Collecting</a>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the footer, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="footer-logo">
+            </a>
+            <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../static/javascript/navbar.js"></script>
+</body>
+</html>
+

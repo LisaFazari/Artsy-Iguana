@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the page is displayed properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsy Iguana</title>
+    
+    <!-- Stylesheet for myprofile page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myprofile.css') }}">
+
+</head>
+<body>
+    <!-- Navigation bar set up -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the navbar, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="logo">
+            </a>
+        </div>
+        <!-- Links in the navigation bar -->
+        <div class="navbar-menu">
+            <a href="home">Home</a>
+            <a href="gallery">Gallery</a>
+            <a id="nav-myprofile" href="myprofile">My Profile</a>
+            <a id="nav-login" href="login">Login</a>
+            <a id="nav-register" href="register">Sign up</a>
+        </div>
+    </nav>
+
+    <!-- Sign Out Button -->
+    <div class="signout-container">
+        <form action="{{ url_for('signout') }}" method="POST">
+            <button type="submit" class="signout-button">Sign Out</button>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <h1>Upload Artwork</h1>
+
+        <!-- Artwork Upload Form -->
+        <form action="/upload_artwork" method="POST" enctype="multipart/form-data">
+            <label for="title">Title:</label>
+            <!-- Title of artwork input -->
+            <input type="text" id="title" name="title" required>
+            <br>
+    
+            <label for="description">Description:</label>
+            <!-- Description input -->
+            <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+            <br>
+    
+            <label for="price">Price:</label>
+            <!-- Set a price for artwork -->
+            <input type="number" id="price" name="price" step="0.01" required>
+            <br>
+    
+            <label for="image">Image:</label>
+            <!-- Select an image to upload-->
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <br>
+    
+            <!-- Button to submit artwork that connects to the database to upload it to the gallery -->
+            <button type="submit">Submit Artwork</button>
+        </form>
+    </div>
+
+    <section class="featured">
+        <h2>Featured Artwork</h2>
+        <div class="artwork-grid">
+        {% for artwork in artworks %}
+            <div class="grid-item">
+                <h2>{{ artwork[1] }}</h2>
+                <p>Artist: {{ artwork[3] }}</p>
+                <img src="{{ url_for('static', filename='UPLOAD_FOLDER/' + artwork[4]|string + '/' + artwork[2]) }}" alt="{{ artwork[1] }}" width="300">
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the footer, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="footer-logo">
+            </a>
+            <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../static/javascript/navbar.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the page is displayed properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsy Iguana</title>
+    
+    <!-- Stylesheet for gallery page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/gallery.css') }}">
+
+</head>
+<body>
+    <!-- Navigation bar set up -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the navbar, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="logo">
+            </a>
+        </div>
+        
+        <!-- Links in the navigation bar -->
+        <div class="navbar-menu">
+            <a href="home">Home</a>
+            <a href="gallery">Gallery</a>
+            <a id="nav-myprofile" href="myprofile">My Profile</a>
+            <a id="nav-login" href="login">Login</a>
+            <a id="nav-register" href="register">Sign up</a>
+        </div>
+    </nav>
+
+    <!-- Search bar section -->
+    <div class="search-bar-container">
+        <form action="/search" method="GET" class="search-form">
+            <input type="text" name="query" class="search-input" placeholder="Search by artist or title..." required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+
+    <!-- Container showcasing the gallery of Art-->
+    <div class="gallery-container">
+
+        <section class="featured">
+            <h2>Gallery of Art</h2>
+            <div class="artwork-grid">
+            {% for artwork in artworks %}
+                <div class="grid-item">
+                    <h2>{{ artwork[1] }}</h2>
+                    <p>Artist: {{ artwork[3] }}</p>
+                    <!-- Selecting the images to showcase from the UPLOAD_FOLDER containing the uploaded images by artists -->
+                    <img src="{{ url_for('static', filename='UPLOAD_FOLDER/' + artwork[4]|string + '/' + artwork[2]) }}" alt="{{ artwork[1] }}" width="300">
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the footer, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="footer-logo">
+            </a>
+            <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../static/javascript/navbar.js"></script>
+</body>
+</html>
+

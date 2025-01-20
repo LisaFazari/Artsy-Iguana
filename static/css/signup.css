@@ -1,0 +1,324 @@
+        /* Root variable for using the same theme color consistantly */
+        :root {
+            --primary-color: #A3C7E3;
+            --secondary-color: #ffffff;
+            --background-color: #FAEEDA;
+            --text-color: #000000;
+            --border-color: #dcdde1;
+            }
+    
+            /* Consistant styling throughout the whole page */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            /* Styling of the body paragraphs */
+            body {
+                font-family: 'Arial', sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                background-color: var(--background-color);
+            }
+    
+            /* Styling og the navigation bar */
+            .navbar {
+                background-color: var(--primary-color);
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+            }
+    
+            /* Navigation bar brand logo that includes a link when clicked */
+            .navbar-brand {
+                display: flex;
+                align-items: center;
+            }
+    
+            .navbar-brand a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+    
+            /* Styling for links in the navbar menu */
+            .navbar-menu a {
+                color: white;
+                text-decoration: none;
+                margin-left: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+            }
+    
+            /* Hover effect for the navigation bar menu links */
+            .navbar-menu a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+    
+            /* Styling for the logo used in the navigation bar*/
+            .logo {
+                height: 40px;
+                width: auto;
+            }
+    
+            /* Styling of the Signup container to be in the center of the webpage*/
+            .signup-container {
+                min-height: calc(100vh - 300px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+            }
+    
+            /* Styling of the signup box */
+            .signup-box {
+                background-color: var(--secondary-color);
+                padding: 2.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 600px;
+            }
+    
+            /* Styling of the heading on the singup form*/
+            .signup-box h2 {
+                color: var(--text-color);
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+    
+            /* Styling of the subtitle in the signup form*/
+            .signup-subtitle {
+                text-align: center;
+                color: #666;
+                margin-bottom: 2rem;
+            }
+    
+            /* Account type section for selecting user type */
+            .account-type {
+                margin-bottom: 2rem;
+            }
+    
+            /* Styling for account type section */
+            .account-type h3 {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+    
+            /* Styling the account type options */
+            .type-options {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+    
+            /* Styling the account type options */
+            .type-option {
+                flex: 1;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+    
+            /* Styling the account type option upon hovering*/
+            .type-option:hover {
+                border-color: var(--primary-color);
+            }
+    
+            /* Adding a top margin for the buttons in account type options */
+            .type-option input[type="radio"] {
+                margin-top: 0.25rem;
+            }
+    
+            /* Styling the container for account type description*/
+            .option-text {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+    
+            /* Styling the main heading within the account type */
+            .option-text strong {
+                color: var(--text-color);
+            }
+    
+            /* Styling the font and color for the text under account type options */
+            .option-text span {
+                font-size: 0.9rem;
+                color: #666;
+            }
+    
+            /* Styling the form fields in a row and adding space between */
+            .form-row {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+    
+            /* Making sure each form group within a row takes equal space */
+            .form-row .form-group {
+                flex: 1;
+            }
+    
+            /* Adding space below each field in the form group */
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+    
+            /* Styling the label in the form */
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--text-color);
+                font-weight: 500;
+            }
+    
+            /* Styling the input boxes in the form */
+            .form-group input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                font-size: 1rem;
+                transition: border-color 0.3s;
+            }
+    
+            .form-group input:focus {
+                outline: none;
+                border-color: var(--primary-color);
+            }
+    
+            /* Adding a password hint text below the the box for the password field */
+            .password-hint {
+                display: block;
+                margin-top: 0.5rem;
+                font-size: 0.85rem;
+                color: #666;
+            }
+    
+            /* Margin for the terms and privacy text */
+            .terms-privacy {
+                margin-bottom: 1.5rem;
+            }
+    
+            /* Terms and privacy section */
+            .checkbox-label {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+    
+            /* Positioning the checkbox */
+            .checkbox-label input {
+                margin-top: 0.25rem;
+            }
+    
+            .checkbox-label a {
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+    
+            /* Adding an underline upon hovering */
+            .checkbox-label a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Styling the button to sign up */
+            .signup-button {
+                width: 100%;
+                padding: 0.75rem;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            /* Styling the color of the button upon hovering */
+            .signup-button:hover {
+                background-color: #4088bb;
+            }
+    
+            /* Styling the login prompt text at the bottom of the singup box */
+            .login-prompt {
+                text-align: center;
+                margin-top: 1.5rem;
+                color: #666;
+            }
+    
+            /* Styling the login link inside the login prompt */
+            .login-prompt a {
+                color: var(--primary-color);
+                text-decoration: none;
+                font-weight: 500;
+            }
+    
+            /* Adding an underline upon hovering for the login link */
+            .login-prompt a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Media query for responsive design */
+            @media (max-width: 600px) {
+                /* Reduces the padding inside the singup box on a smaller screen */
+                .signup-box {
+                    padding: 1.5rem;
+                }
+    
+                /* Changes form layout to column and removes gap between fields on a smaller screen */
+                .form-row {
+                    flex-direction: column;
+                    gap: 0;
+                }
+    
+                /* Changes account type options to stack in a column instead of row */
+                .type-options {
+                    flex-direction: column;
+                }
+    
+                /* Makes both account type options take full width on a smaller screen */
+                .type-option {
+                    width: 100%;
+                }
+            }
+    
+    
+            /* Styling of the footer*/
+            footer {
+                text-align: center;
+                padding: 2rem;
+                background-color: var(--primary-color);
+                color: white;
+                margin-top: 4rem;
+            }
+    
+            /* Styling of the content in the footer */
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+    
+            /* Styling of the logo in the footer*/
+            .footer-logo {
+                height: 150px;
+                width: auto;
+            }

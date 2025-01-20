@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the page is displayed properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsy Iguana</title>
+
+    <!-- Stylesheet for login page -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+<body>
+    <!-- Navigation bar set up -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the navbar, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="logo">
+            </a>
+        </div>
+        <!-- Links in the navigation bar -->
+        <div class="navbar-menu">
+            <a href="home">Home</a>
+            <a href="gallery">Gallery</a>
+            <a id="nav-myprofile" href="myprofile">My Profile</a>
+            <a id="nav-login" href="login">Login</a>
+            <a id="nav-register" href="register">Sign up</a>
+        </div>
+    </nav>
+
+    <!-- Main login container -->
+    <div class="login-container">
+        <div class="login-box">
+            <!-- Login form heading -->
+            <h2>Welcome Back</h2>
+            <p class="login-subtitle">Log in to your Artsy Iguana account</p>
+
+            <!-- Login form -->
+            <form class="login-form" action="/login" method="POST">
+                <div class="form-group">
+                    <!-- Email input -->
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- Password input -->
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="login-button">Log In</button>
+            </form>
+
+            <!-- Sign up prompt if user does not have an account -->
+            <div class="signup-prompt">
+                <p>Don't have an account? <a href="register">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <a href="home">
+                <!-- Logo of Artsy Iguana within the footer, and when clicked it will send you to the home page -->
+                <img src="static/images/Artsyiguana-Logo.png" alt="Artsy Iguana Logo" class="footer-logo">
+            </a>
+            <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+        // Display an alert if there's an error
+        document.addEventListener("DOMContentLoaded", () => {
+            const error = "{{ error }}"; // Pass the error variable from Flask
+            if (error === "invalid") {
+                // The alert
+                alert("Wrong login information. Please try again.");
+            }
+        });
+        </script>
+        <script type="text/javascript" src="../static/javascript/navbar.js"></script>
+</body>
+</html>
+
