@@ -183,6 +183,36 @@
         background-color: #d62839;
     }
 
+
+    /* Styling of Header 2 */
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* Styling the artwork grid */
+    .artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 40px;
+    }
+
+    /* Styling of each artwork in the grid */
+    .grid-item {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    }
+
+    /* Styling of hover effect per art in the grid */
+    .grid-item:hover {
+    transform: translateY(-5px);
+    }
+
     /* Styling of the footer*/
     footer {
         text-align: center;
