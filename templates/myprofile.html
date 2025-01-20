@@ -36,7 +36,7 @@
         </form>
     </div>
 
-    <div class="container">
+    <div id="artForm" class="container">
 
         <h1>Upload Artwork</h1>
 
@@ -93,6 +93,16 @@
 
     <script type="text/javascript" src="../static/javascript/navbar.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const is_artist = getCookie("is_artist");
+            const artForm = document.getElementById("artForm");
+
+            if (is_artist == 0) {
+                artForm.style.display = "none"; // Hides the form element
+            } 
+        });
+    </script>
 </body>
 </html>
 

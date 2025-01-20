@@ -171,7 +171,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
         # Checking if the accountype field in the form is filled in as 'Artist'
-        is_artist = 'accountType' in request.form
+        is_artist = 'account-type' in request.form
 
         # Connecting to the sqlite3 database
         conn = sqlite3.connect('artsy_iguana.db')

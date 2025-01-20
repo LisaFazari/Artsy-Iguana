@@ -6,7 +6,7 @@ function getCookie(name) {
     return null;
 }
 
-// Redirect if user cookie exists
+// Hides and shows navigation items depending on user logged in or not
 document.addEventListener("DOMContentLoaded", () => {
     const userCookie = getCookie("username");
     const loginNav = document.getElementById("nav-login");
