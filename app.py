@@ -1,4 +1,4 @@
-from flask import Flask, make_response, render_template, request, redirect, url_for, flash
+from flask import Flask, make_response, render_template, request, redirect, url_for
 from flask_login import UserMixin
 import sqlite3
 import os
@@ -245,8 +245,7 @@ def upload_artwork():
     is_artist = request.cookies.get('is_artist')
 
     # Checking if user is not an artist
-    if user_id is None or username is None or is_artist != '1':  # Checking if user is not an artist
-        flash('Only artists can upload artwork!', 'error')
+    if user_id is None or username is None or is_artist != '1':  
         return redirect(url_for('myprofile'))
 
     if request.method == 'POST':
