@@ -54,19 +54,6 @@ class User(UserMixin):
         self.email = email
         self.is_artist = is_artist
 
-    # Flask-Login requires these methods to function properly
-    def is_authenticated(self):
-        # Always authenticated once logged in
-        return True  
-
-    def is_active(self):
-        # Always active
-        return True   
-
-    def is_anonymous(self):
-        # No need for anonymous users 
-        return False  
-
 # Flask-Login to load a user by their ID
 def load_user(user_id):
     # Connecting to the sqlite3 database
@@ -147,9 +134,6 @@ def login():
             response.set_cookie('user_id', str(user_id))
             response.set_cookie('username', username)
             response.set_cookie('is_artist', str(is_artist))
-
-            # Logs the user into their account
-            # login_user(user)
             
             return response
         else:
@@ -171,7 +155,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
         # Checking if the accountype field in the form is filled in as 'Artist'
-        is_artist = 'account-type' in request.form
+        is_artist = request.form['accountType']
 
         # Connecting to the sqlite3 database
         conn = sqlite3.connect('artsy_iguana.db')
@@ -188,17 +172,19 @@ def register():
             return redirect(url_for('register', message='Username or email already exists.', status='error'))
         finally:
             conn.close()
-    
+
     return render_template('signup.html')
 
 # Route for signout
 @app.route('/signout', methods=['POST'])
 def signout():
     response = make_response(redirect(url_for('home')))
+    # Clearing the user_id, username and is_artist cookie by setting their value to empty and expiring them to 0
     response.set_cookie('user_id', '', expires=0)
     response.set_cookie('username', '', expires=0)
     response.set_cookie('is_artist', '', expires=0)
 
+    # Successfully logging out to user and redirecting them to the home page
     return response
 
 # Route for myprofile.html
@@ -238,6 +224,7 @@ def gallery():
     conn = sqlite3.connect('artsy_iguana.db')
     c = conn.cursor()
     
+    # Fetching all the submitted artwork along with the username to be displayed on the gallery page
     c.execute('''
         SELECT artwork.id, artwork.title, artwork.image_path, users.username, artwork.artist_id
         FROM artwork
@@ -289,7 +276,6 @@ def upload_artwork():
             conn.commit()
             conn.close()
 
-            flash('Artwork uploaded successfully!', 'success')
             return render_template('myprofile.html')
         
     return render_template('myprofile.html')
@@ -297,10 +283,13 @@ def upload_artwork():
 # Route for search function
 @app.route('/search', methods=['GET'])
 def search():
+    # Retrieving the search query from the user and converting it to lowercase
     query = request.args.get('query', '').lower()
+    # Connecting to the sqlite3 database
     conn = sqlite3.connect('artsy_iguana.db')
     c = conn.cursor()
 
+    # Searching for a match from the search query to the database, searching for either the users.username or artwork.title
     c.execute("""
         SELECT artwork.id, artwork.title, artwork.image_path, users.username, artwork.artist_id
         FROM users
@@ -308,6 +297,7 @@ def search():
         WHERE LOWER(users.username) LIKE ? OR LOWER(artwork.title) LIKE ?
     """, (f'%{query}%', f'%{query}%'))
 
+    # Fetching all the matching data from the query
     results = c.fetchall()
     conn.close()
 

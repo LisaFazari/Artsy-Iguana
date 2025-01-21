@@ -51,6 +51,7 @@
                 <div class="grid-item">
                     <h2>{{ artwork[1] }}</h2>
                     <p>Artist: {{ artwork[3] }}</p>
+                    <!-- Path to select images that have been submitted to the database and feature the last 3 submitted on the home page -->
                     <img src="{{ url_for('static', filename='UPLOAD_FOLDER/' + artwork[4]|string + '/' + artwork[2]) }}" alt="{{ artwork[1] }}" width="300">
                 </div>
             {% endfor %}
@@ -108,7 +109,7 @@
             <p>&copy; 2025 Artsy Iguana. All Rights Reserved.</p>
         </div>
     </footer>
-
+    <!-- Script for the navigation bar -->
     <script type="text/javascript" src="../static/javascript/navbar.js"></script>
 </body>
 </html>

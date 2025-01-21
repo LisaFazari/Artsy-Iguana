@@ -91,15 +91,20 @@
         </div>
     </footer>
 
+    <!-- Script for the navigation bar -->
     <script type="text/javascript" src="../static/javascript/navbar.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Retrieving the value of the is_artist cookie using getCookie
             const is_artist = getCookie("is_artist");
+            // Getting the element with the ID "artForm"
             const artForm = document.getElementById("artForm");
 
+            // Checking if the user is not an artist (is_artist == 0)
             if (is_artist == 0) {
-                artForm.style.display = "none"; // Hides the form element
+                // If user is not an artist, hide the art submission form by setting its display to None
+                artForm.style.display = "none"; 
             } 
         });
     </script>
