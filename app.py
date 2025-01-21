@@ -202,7 +202,7 @@ def myprofile():
         conn = sqlite3.connect('artsy_iguana.db')
         c = conn.cursor()
 
-        # Fetch the last 3 artwork pieces along with the username, ordered by ID (or timestamp) descending
+        # Selecting the art submitted by the login user, to be displayed on the myprofile page
         c.execute(f'''
             SELECT artwork.id, artwork.title, artwork.image_path, users.username, artwork.artist_id
             FROM artwork
